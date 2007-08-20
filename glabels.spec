@@ -116,7 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %_datadir/omf/%name
 %_datadir/omf/%name/%name-C.omf
 %_datadir/pixmaps/*
-%_datadir/man/man1/*
+%_mandir/man1/*
 %_menudir/*
 %_datadir/gtk-doc/html/libglabels/*
 
