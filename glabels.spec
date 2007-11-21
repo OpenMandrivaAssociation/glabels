@@ -1,8 +1,8 @@
 %define name glabels
-%define version 2.1.3
-%define release %mkrel 5
+%define version 2.1.4
+%define release %mkrel 1
 
-%define major 2
+%define major 4
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name} %major -d
 
@@ -59,6 +59,7 @@ for GNOME. Devel files.
 %build
 
 %configure2_5x
+#perl -p -i -e 's/%{name}.png/%{name}/g' data/desktop/%{name}.desktop
 %make
 
 %install
@@ -67,6 +68,8 @@ rm -fr %buildroot %name.lang
 %makeinstall UPDATE_MIME_DATABASE=true UPDATE_DESKTOP_DATABASE=true
 
 rm -rf $RPM_BUILD_ROOT/var
+
+perl -p -i -e 's/%{name}.png/%{name}/g' %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
 mkdir -p $RPM_BUILD_ROOT/%_menudir
 cat > $RPM_BUILD_ROOT%_menudir/%{name} <<EOF
