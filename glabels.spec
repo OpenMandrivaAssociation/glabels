@@ -27,6 +27,7 @@ BuildRequires:  desktop-file-utils
 Requires(post): scrollkeeper
 Requires(postun): scrollkeeper
 
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Glabels is stand-alone program for creating labels and business cards
