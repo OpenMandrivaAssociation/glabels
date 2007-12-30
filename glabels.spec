@@ -2,7 +2,7 @@
 %define version 2.2.0
 %define release %mkrel 1
 
-%define major 4
+%define major 5
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name}  -d
 
@@ -46,6 +46,7 @@ Summary: Glabels devel files
 Group: Development/Other
 Requires: %libname = %version
 Provides: libglabels-devel
+Obsoletes: %mklibname -d glabels 4
 
 %description -n %libnamedev
 Glabels is stand-alone program for creating labels and business cards
