@@ -1,20 +1,20 @@
 %define name glabels
-%define version 2.1.4
+%define version 2.2.0
 %define release %mkrel 1
 
 %define major 4
 %define libname %mklibname %{name} %major
-%define libnamedev %mklibname %{name} %major -d
+%define libnamedev %mklibname %{name}  -d
 
 
 Summary:	Glabels is a GNOME program to create labels and business cards
 Name:		%name
 Version:	%version
 Release:	%release
-License:	GPL
+License:	GPLv2+
 Group:		Office
 
-Source:		http://easynews.dl.sourceforge.net/sourceforge/glabels/%name-%version.tar.bz2
+Source:		http://easynews.dl.sourceforge.net/sourceforge/glabels/%name-%version.tar.gz
 
 URL:		http://snaught.com/glabels/
 Buildrequires:  libgnomeprintui-devel
@@ -71,21 +71,8 @@ rm -rf $RPM_BUILD_ROOT/var
 
 perl -p -i -e 's/%{name}.png/%{name}/g' %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
-mkdir -p $RPM_BUILD_ROOT/%_menudir
-cat > $RPM_BUILD_ROOT%_menudir/%{name} <<EOF
-?package(%{name}):\
-command="%_bindir/glabels"\
-title="Glabels"\
-longtitle="Create labels and business cards"\
-needs="x11"\
-section="Office/Accessories" \
-icon="office_accessories_section.png" \
-xdg="true"
-EOF
-
 desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --add-category="X-MandrivaLinux-Office-Accessories" \
+  --remove-category='Application' \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 %find_lang %name --with-gnome
@@ -120,7 +107,6 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/omf/%name/%name-C.omf
 %_datadir/pixmaps/*
 %_mandir/man1/*
-%_menudir/*
 %_datadir/gtk-doc/html/libglabels/*
 
 %files -n %libname
