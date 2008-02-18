@@ -7,7 +7,7 @@
 %define libnamedev %mklibname %{name}  -d
 
 
-Summary:	Glabels is a GNOME program to create labels and business cards
+Summary:	GNOME program to create labels and business cards
 Name:		%name
 Version:	%version
 Release:	%release
@@ -34,7 +34,7 @@ Glabels is stand-alone program for creating labels and business cards
 for GNOME.
 
 %package -n %libname
-Summary: Glabels is a GNOME program to create labels and business cards
+Summary: GNOME program to create labels and business cards
 Group: System/Libraries
 
 %description -n %libname
