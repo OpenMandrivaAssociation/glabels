@@ -1,6 +1,6 @@
 %define name glabels
-%define version 2.2.0
-%define release %mkrel 2
+%define version 2.2.2
+%define release %mkrel 1
 
 %define major 5
 %define libname %mklibname %{name} %major
@@ -59,7 +59,7 @@ for GNOME. Devel files.
 
 %build
 
-%configure2_5x
+%configure
 #perl -p -i -e 's/%{name}.png/%{name}/g' data/desktop/%{name}.desktop
 %make
 
