@@ -78,15 +78,19 @@ desktop-file-install --vendor="" \
 
 %find_lang %name --with-gnome
 
+%if %mdkversion < 200900
 %post
 %update_menus
 %update_mime_database
 %update_scrollkeeper
+%endif
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
 %clean_mime_database
 %clean_scrollkeeper
+%endif
 
 %if %mdkversion < 200900
 %post -n %libname -p /sbin/ldconfig
