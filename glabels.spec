@@ -1,6 +1,6 @@
 %define name glabels
 %define version 2.2.2
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 5
 %define libname %mklibname %{name} %major
@@ -15,6 +15,8 @@ License:	GPLv2+
 Group:		Office
 
 Source:		http://easynews.dl.sourceforge.net/sourceforge/glabels/%name-%version.tar.gz
+# https://bugzilla.redhat.com/show_bug.cgi?id=458473
+Patch0:		glabels-fix-batch-segfault.patch
 
 URL:		http://snaught.com/glabels/
 Buildrequires:  libgnomeprintui-devel
@@ -56,6 +58,7 @@ for GNOME. Devel files.
 %prep
 
 %setup -q
+%patch0 -p1 -b .fix-batch-segfault
 
 %build
 
