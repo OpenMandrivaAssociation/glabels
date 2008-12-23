@@ -13,8 +13,8 @@ Version:	%version
 Release:	%release
 License:	GPLv2+
 Group:		Office
-
 Source:		http://easynews.dl.sourceforge.net/sourceforge/glabels/%name-%version.tar.gz
+Patch0:		glabels-2.2.4-fix-str-fmt.patch
 URL:		http://glabels.sourceforge.net/
 Buildrequires:  libgnomeprintui-devel
 BuildRequires:  evolution-data-server-devel
@@ -53,6 +53,7 @@ for GNOME. Devel files.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %configure2_5x --disable-update-mimedb --disable-update-desktopdb
