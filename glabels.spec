@@ -1,5 +1,5 @@
 %define name glabels
-%define version 2.2.4
+%define version 2.2.5
 %define release %mkrel 1
 
 %define major 5
@@ -14,7 +14,7 @@ Release:	%release
 License:	GPLv2+
 Group:		Office
 Source:		http://easynews.dl.sourceforge.net/sourceforge/glabels/%name-%version.tar.gz
-Patch0:		glabels-2.2.4-fix-str-fmt.patch
+Patch0:		glabels-2.2.5-fix-str-fmt.patch
 URL:		http://glabels.sourceforge.net/
 Buildrequires:  libgnomeprintui-devel
 BuildRequires:  evolution-data-server-devel
@@ -23,6 +23,7 @@ BuildRequires:  libgnomeui2-devel
 BuildRequires:  perl-XML-Parser
 BuildRequires:  scrollkeeper
 BuildRequires:  desktop-file-utils
+BuildRequires:	intltool
 Requires(post): scrollkeeper
 Requires(postun): scrollkeeper
 
