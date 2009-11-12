@@ -1,5 +1,5 @@
 %define name glabels
-%define version 2.2.5
+%define version 2.2.6
 %define release %mkrel 1
 
 %define major 5
@@ -109,6 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/mime/packages/*
 %dir %_datadir/omf/%name
 %_datadir/omf/%name/%name-C.omf
+%lang(de) %_datadir/omf/%name/%name-de.omf
 %_datadir/pixmaps/*
 %_mandir/man1/*
 %_datadir/gtk-doc/html/libglabels/*
