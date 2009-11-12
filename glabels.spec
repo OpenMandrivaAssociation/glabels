@@ -24,6 +24,7 @@ BuildRequires:  perl-XML-Parser
 BuildRequires:  scrollkeeper
 BuildRequires:  desktop-file-utils
 BuildRequires:	intltool
+BuildRequires:	gnome-doc-utils >= 0.3.2
 Requires(post): scrollkeeper
 Requires(postun): scrollkeeper
 
