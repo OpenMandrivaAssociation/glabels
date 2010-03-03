@@ -1,5 +1,5 @@
 %define name glabels
-%define version 2.2.6
+%define version 2.2.7
 %define release %mkrel 1
 
 %define major 5
@@ -73,6 +73,10 @@ desktop-file-install --vendor="" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 %find_lang %name --with-gnome
+for omf in %buildroot%_datadir/omf/*/*-??*.omf;do 
+echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name.lang
+done
+
 
 %if %mdkversion < 200900
 %post
@@ -110,7 +114,6 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/mime/packages/*
 %dir %_datadir/omf/%name
 %_datadir/omf/%name/%name-C.omf
-%lang(de) %_datadir/omf/%name/%name-de.omf
 %_datadir/pixmaps/*
 %_mandir/man1/*
 %_datadir/gtk-doc/html/libglabels/*
