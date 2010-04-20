@@ -1,5 +1,5 @@
 %define name glabels
-%define version 2.2.7
+%define version 2.2.8
 %define release %mkrel 1
 
 %define major 5
