@@ -1,9 +1,10 @@
 %define name glabels
-%define version 2.2.8
+%define version 2.3.0
 %define release %mkrel 1
 
-%define major 5
-%define libname %mklibname %{name} %major
+%define api 3.0
+%define major 7
+%define libname %mklibname %{name} %api %major
 %define libnamedev %mklibname %{name}  -d
 
 
@@ -13,14 +14,10 @@ Version:	%version
 Release:	%release
 License:	GPLv2+
 Group:		Office
-Source:		http://easynews.dl.sourceforge.net/sourceforge/glabels/%name-%version.tar.gz
-Patch0:		glabels-2.2.5-fix-str-fmt.patch
+Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 URL:		http://glabels.sourceforge.net/
-Buildrequires:  libgnomeprintui-devel
 BuildRequires:  evolution-data-server-devel
-BuildRequires:  libglade2.0-devel
-BuildRequires:  libgnomeui2-devel
-BuildRequires:  perl-XML-Parser
+BuildRequires:  gtk+2-devel
 BuildRequires:  scrollkeeper
 BuildRequires:  desktop-file-utils
 BuildRequires:	intltool
@@ -55,14 +52,13 @@ for GNOME. Devel files.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
 %configure2_5x --disable-update-mimedb --disable-update-desktopdb
 %make
 
 %install
-rm -fr %buildroot
+rm -fr %buildroot *.lang
 %makeinstall_std
 rm -rf $RPM_BUILD_ROOT/var
 
@@ -72,62 +68,39 @@ desktop-file-install --vendor="" \
   --remove-category='Application' \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
-%find_lang %name --with-gnome
+%find_lang %name-%api --with-gnome
 for omf in %buildroot%_datadir/omf/*/*-??*.omf;do 
-echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name.lang
+echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name-%api.lang
 done
-
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%update_mime_database
-%update_scrollkeeper
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%clean_mime_database
-%clean_scrollkeeper
-%endif
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %name.lang
+%files -f %name-%api.lang
 %defattr(-, root, root)
 %doc README AUTHORS
 %_bindir/*
-%_datadir/%name
-%_datadir/application-registry/*
+%_datadir/%name-%api
+%_datadir/lib%name-%api
 %_datadir/applications/*
-%_datadir/mime-info/*
 %_datadir/mime/packages/*
-%dir %_datadir/omf/%name
-%_datadir/omf/%name/%name-C.omf
+%_datadir/icons/hicolor/*/mimetypes/*glabels*
+#%dir %_datadir/omf/%name
+#%_datadir/omf/%name/%name-C.omf
 %_datadir/pixmaps/*
 %_mandir/man1/*
-%_datadir/gtk-doc/html/libglabels/*
+%_datadir/gtk-doc/html/lib%name-%api/
 
 %files -n %libname
 %defattr(-, root, root)
-%_libdir/*.so.%{major}*
+%_libdir/libglabels-%api.so.%{major}*
 
 %files -n %libnamedev
 %defattr(-, root, root)
-%_libdir/*.so
-%_libdir/*.*a
-%dir %_includedir/libglabels
-%_includedir/libglabels/*
-%_libdir/pkgconfig/libglabels.pc
+%_libdir/libglabels-%api.so
+%_libdir/libglabels-%api.*a
+%dir %_includedir/libglabels-%api
+%_includedir/libglabels-%api/*
+%_libdir/pkgconfig/libglabels-%api.pc
 
 
