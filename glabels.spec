@@ -1,6 +1,6 @@
 %define name glabels
 %define version 2.3.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define api 3.0
 %define major 7
