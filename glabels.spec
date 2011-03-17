@@ -1,6 +1,6 @@
 %define name glabels
 %define version 2.3.0
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define api 3.0
 %define major 7
@@ -22,6 +22,10 @@ BuildRequires:  scrollkeeper
 BuildRequires:  desktop-file-utils
 BuildRequires:	intltool
 BuildRequires:	gnome-doc-utils >= 0.3.2
+BuildRequires:  qrencode-devel
+BuildRequires:  iec16022-devel
+BuildRequires:  zint-devel
+BuildRequires:  barcode-devel
 Requires(post): scrollkeeper
 Requires(postun): scrollkeeper
 
