@@ -7,7 +7,7 @@
 Summary:	GNOME program to create labels and business cards
 Name:		glabels
 Version:	2.3.0
-Release:	4
+Release:	5
 License:	GPLv2+
 Group:		Office
 Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
