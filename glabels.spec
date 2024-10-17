@@ -11,7 +11,7 @@ Release:	5
 License:	GPLv2+
 Group:		Office
 Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-URL:		http://glabels.sourceforge.net/
+URL:		https://glabels.sourceforge.net/
 BuildRequires:  evolution-data-server-devel
 BuildRequires:  gtk+2-devel
 BuildRequires:  scrollkeeper
