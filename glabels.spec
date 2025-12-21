@@ -12,6 +12,11 @@ License:	GPLv2+
 Group:		Office
 Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 URL:		https://glabels.sourceforge.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  evolution-data-server-devel
 BuildRequires:  gtk+2-devel
 BuildRequires:  scrollkeeper
